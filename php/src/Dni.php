@@ -13,15 +13,9 @@ class Dni
     public static function fromString(string $value): self
     {
         self::checkLength($value);
-        self::checkLastCharMustBeALetter($value);
-
-        if (!preg_match('/\d+$/', substr($value, 0, -1))) {
-            throw new RuntimeException('all chars but last one must be numeric');
-        }
-
-        if (preg_match('/[UIO]$/', $value)) {
-            throw new RuntimeException('invalid characters');
-        }
+        self::checkLetterChar($value);
+        self::checkNumericChars($value);
+        self::checkInvalidChars($value);
 
         return new self($value);
     }
@@ -37,10 +31,24 @@ class Dni
         }
     }
 
-    private static function checkLastCharMustBeALetter(string $value): void
+    private static function checkLetterChar(string $value): void
     {
         if (preg_match('/\d$/', $value[self::VALID_LENGTH - 1])) {
             throw new RuntimeException('the last char must be a letter');
+        }
+    }
+
+    private static function checkNumericChars(string $value): void
+    {
+        if (!preg_match('/\d+$/', substr($value, 0, -1))) {
+            throw new RuntimeException('all chars but last one must be numeric');
+        }
+    }
+
+    private static function checkInvalidChars(string $value): void
+    {
+        if (preg_match('/[UIO]$/', $value)) {
+            throw new RuntimeException('invalid characters');
         }
     }
 
