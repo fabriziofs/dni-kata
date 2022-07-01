@@ -47,4 +47,12 @@ class DniTest extends TestCase
 
         Dni::fromString('abcdefghi');
     }
+
+    /** @test */
+    public function when_it_contains_U_then_error(): void
+    {
+        $this->expectExceptionMessage('characters U are invalid');
+
+        Dni::fromString('31970165U');
+    }
 }
