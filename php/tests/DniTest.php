@@ -31,4 +31,12 @@ class DniTest extends TestCase
 
         Dni::fromString('1234567890');
     }
+
+    /** @test */
+    public function when_last_char_is_not_a_letter_then_error(): void
+    {
+        $this->expectExceptionMessage('the last char must be a letter');
+
+        Dni::fromString('123456789');
+    }
 }
