@@ -1,3 +1,9 @@
+# ¿Qué practicar?
+- Baby steps
+- Refactoring
+- Domain exceptions
+- Value Object
+
 # Repasando conceptos
 
 ## Qué es eso del DNI (si no eres de España)
