@@ -1,5 +1,6 @@
 # ¿Qué practicar?
 - Baby steps
+- 3 repetition rule
 - Refactoring
 - Domain exceptions
 - Value Object
