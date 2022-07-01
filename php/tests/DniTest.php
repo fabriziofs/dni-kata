@@ -9,6 +9,14 @@ use PHPUnit\Framework\TestCase;
 class DniTest extends TestCase
 {
     /** @test */
+    public function should_create_dni_give_valid_value(): void
+    {
+        $validDni = '31970165G';
+        $dni = Dni::fromString($validDni);
+        self::assertSame($validDni, $dni->toString());
+    }
+
+    /** @test */
     public function when_it_contains_8_chars_then_invalid_length(): void
     {
         $this->expectExceptionMessage('invalid length');
