@@ -1,7 +1,10 @@
 <?php
+
 declare(strict_types = 1);
 
 namespace Kata;
+
+use RuntimeException;
 
 class Dni
 {
@@ -10,11 +13,15 @@ class Dni
     public static function fromString(string $value): self
     {
         if (strlen($value) !== self::VALID_LENGTH) {
-            throw new \RuntimeException('invalid length');
+            throw new RuntimeException('invalid length');
         }
 
         if (preg_match('/\d$/', $value[self::VALID_LENGTH - 1])) {
-            throw new \RuntimeException('the last char must be a letter');
+            throw new RuntimeException('the last char must be a letter');
+        }
+
+        if (!preg_match('/\d+$/', substr($value, 0, -1))) {
+            throw new RuntimeException('all chars but last one must be numeric');
         }
 
         return new self($value);
