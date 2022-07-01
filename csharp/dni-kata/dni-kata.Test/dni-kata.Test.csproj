@@ -22,4 +22,8 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\dni-kata\dni-kata.csproj" />
+    </ItemGroup>
+
 </Project>
