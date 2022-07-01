@@ -10,6 +10,10 @@ class Dni
             throw new \RuntimeException('too short');
         }
 
+        if(strlen($value) > 9){
+            throw new \RuntimeException('too long');
+        }
+
         return new self($value);
     }
 

@@ -14,4 +14,12 @@ class DniTest extends TestCase
 
         Dni::fromString('12345678');
     }
+
+    /** @test */
+    public function when_it_contains_10_chars_then_error(): void
+    {
+        $this->expectExceptionMessage('too long');
+
+        Dni::fromString('1234567890');
+    }
 }
