@@ -82,6 +82,36 @@ Si nos fijamos en las condiciones recogidas en la lista anterior, vemos que cada
 
 
 ## Ejemplos validos
+Encontrar ejemplos para generar tests es muy fácil, ya que nos basta con utilizar las cadenas desde 00000000 a 00000022. En la siguiente tabla de correspondencia tenemos los ejemplos válidos:
+
+| Parte numérica | Resto | Letra | DNI |
+|----|------|-------|----|
+| 00000000 | 0 | T | 00000000T |
+| 00000001 | 1 | R | 00000001R |
+| 00000002 | 2 | W | 00000002W |
+| 00000003 | 3 | A | 00000003A |
+| 00000004 | 4 | G | 00000004G |
+| 00000005 | 5 | M | 00000005M |
+| 00000006 | 6 | Y | 00000006Y |
+| 00000007 | 7 | F | 00000007F |
+| 00000008 | 8 | P | 00000008P |
+| 00000009 | 9 | D | 00000009D |
+| 00000010 | 10 | X | 00000010X |
+| 00000011 | 11 | B | 00000011B |
+| 00000012 | 12 | N | 00000012N |
+| 00000013 | 13 | J | 00000013J |
+| 00000014 | 14 | Z | 00000014Z |
+| 00000015 | 15 | S | 00000015S |
+| 00000016 | 16 | Q | 00000016Q |
+| 00000017 | 17 | V | 00000017V |
+| 00000018 | 18 | H | 00000018H |
+| 00000019 | 19 | L | 00000019L |
+| 00000020 | 20 | C | 00000020C |
+| 00000021 | 21 | K | 00000021K |
+| 00000022 | 22 | E | 00000022E |
+
+
+
 *DNI*
 ```
 31970165G
