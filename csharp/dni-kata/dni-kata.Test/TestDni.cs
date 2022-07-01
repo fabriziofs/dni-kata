@@ -26,4 +26,14 @@ public class TestDni
         Assert.Throws<Exception>(() => new Dni("319701650"));
     }
 
+    [Theory]
+    [InlineData("31970165U")]
+    [InlineData("31970165I")]
+    [InlineData("31970165O")]
+    [InlineData("31970165Ñ")]
+    public void Test_Dni_LastCharacter_ShouldNotBeUION(string dniToCheck)
+    {
+        Assert.Throws<Exception>(() => new Dni(dniToCheck));
+    }
+
 }

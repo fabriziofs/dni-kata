@@ -5,13 +5,23 @@ public class Dni
     public Dni(string value)
     {
         CheckValueLength(value);
-        var lastCharacter = value[8];
+        CheckLastDigitIsLetter(value);
+        if (value[8] == 'U')
+            throw new Exception();
+        if (value[8] == 'I')
+            throw new Exception();
+        if (value[8] == 'O')
+            throw new Exception();
+        if (value[8] == 'Ñ')
+            throw new Exception();
+    }
 
-        if (!char.IsLetter(lastCharacter))
+    private static void CheckLastDigitIsLetter(string value)
+    {
+        if (!char.IsLetter(value[8]))
         {
             throw new Exception();
         }
-
     }
 
     private static void CheckValueLength(string value)
