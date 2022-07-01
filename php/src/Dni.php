@@ -24,8 +24,8 @@ class Dni
             throw new RuntimeException('all chars but last one must be numeric');
         }
 
-        if (preg_match('/[U]$/', $value)) {
-            throw new RuntimeException('characters U are invalid');
+        if (preg_match('/[UIO]$/', $value)) {
+            throw new RuntimeException('invalid characters');
         }
 
         return new self($value);

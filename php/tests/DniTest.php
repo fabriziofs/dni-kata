@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types = 1);
 
 namespace KataTests;
@@ -48,11 +49,22 @@ class DniTest extends TestCase
         Dni::fromString('abcdefghi');
     }
 
-    /** @test */
-    public function when_it_contains_U_then_error(): void
+    /**
+     * @test
+     * @dataProvider providerWhenItContainsInvalidChars
+     */
+    public function when_it_contains_invalid_chars(string $invalidChar): void
     {
-        $this->expectExceptionMessage('characters U are invalid');
+        $this->expectExceptionMessage("invalid characters");
 
-        Dni::fromString('31970165U');
+        Dni::fromString('31970165' . $invalidChar);
+    }
+
+    public function providerWhenItContainsInvalidChars(): iterable
+    {
+        yield ['U' => 'U'];
+        yield ['I' => 'I'];
+        yield ['O' => 'O'];
+//        yield ['Ñ' => 'Ñ'];
     }
 }
