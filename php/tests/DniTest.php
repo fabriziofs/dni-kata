@@ -31,10 +31,23 @@ final class DniTest extends TestCase
         Dni::create('000000000');
     }
 
-    public function test_character_should_not_be_an_invalid_character(): void
+    /**
+     * @dataProvider invalidCharactersProvider
+     */
+    public function test_character_should_not_be_an_invalid_character(string $dni): void
     {
         $this->expectException(Exception::class);
 
-        Dni::create('00000000U');
+        Dni::create($dni);
+    }
+
+    public function invalidCharactersProvider(): array
+    {
+        return [
+            'letter I' => ['00000000I'],
+            'letter Ñ' => ['00000000Ñ'],
+            'letter O' => ['00000000O'],
+            'letter U' => ['00000000U'],
+        ];
     }
 }

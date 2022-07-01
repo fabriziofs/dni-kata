@@ -9,6 +9,7 @@ use Exception;
 final class Dni
 {
     private const DNI_LENGTH = 9;
+    private const INVALID_CHARACTERS = ['I', 'Ñ', 'O', 'U'];
 
     private function __construct(private string $dni)
     {
@@ -24,7 +25,7 @@ final class Dni
             throw new Exception();
         }
 
-        if (in_array($dni[8], ['U', 'I', 'O', 'Ñ'])) {
+        if (in_array($dni[8], self::INVALID_CHARACTERS)) {
             throw new Exception();
         }
 
