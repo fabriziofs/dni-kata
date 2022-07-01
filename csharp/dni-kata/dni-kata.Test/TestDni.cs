@@ -36,4 +36,20 @@ public class TestDni
         Assert.Throws<Exception>(() => new Dni(dniToCheck));
     }
 
+    [Theory]
+    [InlineData("31A70165G")]
+    public void Test_Dni_ChecksumShouldMatch(string dniToCheck)
+    {
+        Assert.Throws<Exception>(() => new Dni(dniToCheck));
+    }
+
+
+    /* [Theory]
+    [InlineData("31970165Y")]
+    public void Test_Dni_ChecksumShouldMatch(string dniToCheck)
+    {
+        Assert.Throws<Exception>(() => new Dni(dniToCheck));
+    }
+    */
+
 }

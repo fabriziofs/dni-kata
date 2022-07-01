@@ -4,11 +4,20 @@ public class Dni
 {
     public static char[] INVALID_CHARACTERS = { 'U', 'I', 'O', 'Ñ' };
 
+    private string cheskSumTable = "TRWAGMYFPDXBNJZSQVHLCKE";
+
+
     public Dni(string value)
     {
         CheckValueLength(value);
         CheckLastDigitIsLetter(value);
         CheckIfLastCharIsCorrect(value);
+        int digitsvalue;
+        if (!int.TryParse(value.Substring(0, 8), out digitsvalue))
+        {
+            throw new Exception();
+        }
+
     }
 
     private static void CheckIfLastCharIsCorrect(string value)
