@@ -2,18 +2,22 @@ namespace dni_kata;
 
 public class Dni
 {
+    public static char[] INVALID_CHARACTERS = { 'U', 'I', 'O', 'Ñ' };
+
     public Dni(string value)
     {
         CheckValueLength(value);
         CheckLastDigitIsLetter(value);
-        if (value[8] == 'U')
-            throw new Exception();
-        if (value[8] == 'I')
-            throw new Exception();
-        if (value[8] == 'O')
-            throw new Exception();
-        if (value[8] == 'Ñ')
-            throw new Exception();
+        CheckIfLastCharIsCorrect(value);
+    }
+
+    private static void CheckIfLastCharIsCorrect(string value)
+    {
+        foreach (char invalidChar in INVALID_CHARACTERS)
+        {
+            if (value[8] == invalidChar)
+                throw new Exception();
+        }
     }
 
     private static void CheckLastDigitIsLetter(string value)
