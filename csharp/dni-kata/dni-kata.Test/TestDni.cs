@@ -3,13 +3,19 @@ namespace dni_kata.Test;
 public class TestDni
 {
     [Fact]
-    public void Test_Dni_ShouldBeNotLongerThan8()
+    public void Test_Dni_ShouldWorkWhenIsValid()
     {
-         Assert.Throws<Exception>(() => new Dni("123456789"));
+        new Dni("31970165G");
     }
 
     [Fact]
-    public void Test_Dni_shoulBeNotShorterThan8()
+    public void Test_Dni_ShouldBeNotLongerThan8()
+    {
+         Assert.Throws<Exception>(() => new Dni("1234567890"));
+    }
+
+    [Fact]
+    public void Test_Dni_shouldBeNotShorterThan8()
     {
         Assert.Throws<Exception>(() => new Dni("1234567"));
     }
