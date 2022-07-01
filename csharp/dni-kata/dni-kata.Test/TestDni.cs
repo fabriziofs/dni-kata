@@ -20,4 +20,10 @@ public class TestDni
         Assert.Throws<Exception>(() => new Dni("1234567"));
     }
 
+    [Fact]
+    public void Test_Dni_LastCharacter_ShouldBeChar()
+    {
+        Assert.Throws<Exception>(() => new Dni("319701650"));
+    }
+
 }
