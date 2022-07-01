@@ -30,4 +30,11 @@ final class DniTest extends TestCase
 
         Dni::create('000000000');
     }
+
+    public function test_character_should_not_be_an_invalid_character(): void
+    {
+        $this->expectException(Exception::class);
+
+        Dni::create('00000000U');
+    }
 }

@@ -24,6 +24,10 @@ final class Dni
             throw new Exception();
         }
 
+        if (in_array($dni[8], ['U', 'I', 'O', 'Ñ'])) {
+            throw new Exception();
+        }
+
         return new self($dni);
     }
 }
