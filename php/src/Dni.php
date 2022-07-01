@@ -11,7 +11,7 @@ class Dni
             throw new \RuntimeException('invalid length');
         }
 
-        if (preg_match('/[\d]$/', substr($value, 9 - 1, 1))) {
+        if (preg_match('/[\d]$/', $value[9 - 1])) {
             throw new \RuntimeException('the last char must be a letter');
         }
 
