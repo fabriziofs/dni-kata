@@ -7,7 +7,7 @@ class Dni
 {
     public static function fromString(string $value): self
     {
-        if (strlen($value) < 9 || strlen($value) > 9) {
+        if (strlen($value) !== 9) {
             throw new \RuntimeException('invalid length');
         }
 
