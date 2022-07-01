@@ -27,4 +27,9 @@ final class DniException extends RuntimeException
             )
         );
     }
+
+    public static function invalidLetterMapper(): self
+    {
+        return new self('Invalid DNI letter');
+    }
 }
