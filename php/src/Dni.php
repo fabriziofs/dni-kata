@@ -5,13 +5,15 @@ namespace Kata;
 
 class Dni
 {
+    private const VALID_LENGTH = 9;
+
     public static function fromString(string $value): self
     {
-        if (strlen($value) !== 9) {
+        if (strlen($value) !== self::VALID_LENGTH) {
             throw new \RuntimeException('invalid length');
         }
 
-        if (preg_match('/[\d]$/', $value[9 - 1])) {
+        if (preg_match('/\d$/', $value[self::VALID_LENGTH - 1])) {
             throw new \RuntimeException('the last char must be a letter');
         }
 
