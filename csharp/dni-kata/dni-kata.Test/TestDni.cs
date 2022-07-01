@@ -8,11 +8,3 @@ public class TestDni
         Assert.Throws<Exception>(() => new Dni("123456789"));
     }
 }
-
-public class Dni
-{
-    public Dni(string s)
-    {
-        throw new Exception();
-    }
-}
