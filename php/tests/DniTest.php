@@ -6,6 +6,7 @@ namespace KataTests;
 
 use Exception;
 use Kata\Dni;
+use Kata\DniException;
 use PHPUnit\Framework\TestCase;
 
 final class DniTest extends TestCase
@@ -19,7 +20,8 @@ final class DniTest extends TestCase
 
     public function test_length_lower_nine_characters(): void
     {
-        $this->expectException(Exception::class);
+        $this->expectException(DniException::class);
+        $this->expectExceptionMessageMatches('/The length should be \d chars/');
 
         Dni::create('0');
     }
@@ -36,7 +38,8 @@ final class DniTest extends TestCase
      */
     public function test_character_should_not_be_an_invalid_character(string $dni): void
     {
-        $this->expectException(Exception::class);
+        $this->expectException(DniException::class);
+        $this->expectExceptionMessage("The final letter cannot be ['I', 'Ñ', 'O', 'U']");
 
         Dni::create($dni);
     }
