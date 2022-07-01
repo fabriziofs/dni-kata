@@ -39,4 +39,12 @@ class DniTest extends TestCase
 
         Dni::fromString('123456789');
     }
+
+    /** @test */
+    public function when_all_chars_but_last_char_are_not_numeric_then_error(): void
+    {
+        $this->expectExceptionMessage('all chars but last one must be numeric');
+
+        Dni::fromString('abcdefghi');
+    }
 }
