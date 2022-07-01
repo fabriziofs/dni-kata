@@ -20,6 +20,10 @@ final class Dni
             throw new Exception();
         }
 
+        if (preg_match('/\d{8}[A-Z]/', $dni) !== 1) {
+            throw new Exception();
+        }
+
         return new self($dni);
     }
 }

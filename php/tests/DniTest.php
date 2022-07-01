@@ -10,6 +10,13 @@ use PHPUnit\Framework\TestCase;
 
 final class DniTest extends TestCase
 {
+    public function test_valid_dni(): void
+    {
+        $dni = Dni::create('00000000A');
+
+        self::assertInstanceOf(Dni::class, $dni);
+    }
+
     public function test_length_lower_nine_characters(): void
     {
         $this->expectException(Exception::class);
@@ -17,10 +24,10 @@ final class DniTest extends TestCase
         Dni::create('0');
     }
 
-    public function test_length_is_nine_characters(): void
+    public function test_first_eight_characters_are_numbers(): void
     {
-        $dni = Dni::create('000000000');
+        $this->expectException(Exception::class);
 
-        self::assertInstanceOf(Dni::class, $dni);
+        Dni::create('000000000');
     }
 }
