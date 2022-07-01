@@ -9,13 +9,13 @@ public class TestDni
     }
 
     [Fact]
-    public void Test_Dni_ShouldBeNotLongerThan8()
+    public void Test_Dni_ShouldBeNotLongerThan9()
     {
          Assert.Throws<Exception>(() => new Dni("1234567890"));
     }
 
     [Fact]
-    public void Test_Dni_shouldBeNotShorterThan8()
+    public void Test_Dni_shouldBeNotShorterThan9()
     {
         Assert.Throws<Exception>(() => new Dni("1234567"));
     }

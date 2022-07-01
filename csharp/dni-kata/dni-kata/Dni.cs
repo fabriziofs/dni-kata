@@ -2,19 +2,23 @@ namespace dni_kata;
 
 public class Dni
 {
-    public Dni(string s)
+    public Dni(string value)
     {
-        if (s.Length>9)
-         throw new Exception();
-        if (s.Length < 9)
-         throw new Exception();
-
-        var lastCharacter = s[8];
+        CheckValueLength(value);
+        var lastCharacter = value[8];
 
         if (!char.IsLetter(lastCharacter))
         {
             throw new Exception();
         }
 
+    }
+
+    private static void CheckValueLength(string value)
+    {
+        if (value.Length > 9)
+            throw new Exception();
+        if (value.Length < 9)
+            throw new Exception();
     }
 }
