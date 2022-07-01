@@ -4,6 +4,9 @@ public class Dni
 {
     public Dni(string s)
     {
-        throw new Exception();
+        if (s.Length>8)
+         throw new Exception();
+        if (s.Length < 8)
+         throw new Exception();
     }
 }
