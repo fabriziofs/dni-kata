@@ -10,7 +10,7 @@ class Dni
             throw new DniInvalidLengthException();
         }
 
-        if (!preg_match('/\d{8}[A-Z]/', $dni))
+        if (!preg_match('/\d{8}[A-ZÑ]/u', $dni))
         {
             throw new DniInvalidFormatException();
         }
