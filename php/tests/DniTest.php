@@ -4,6 +4,8 @@ namespace KataTests;
 
 use Generator;
 use Kata\Dni;
+use Kata\DniInvalidFormatException;
+use Kata\DniInvalidLengthException;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
@@ -20,7 +22,7 @@ class DniTest extends TestCase
     /** @test */
     public function should_have_nine_characters(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(DniInvalidLengthException::class);
 
         new Dni('1234567N');
     }
@@ -28,7 +30,7 @@ class DniTest extends TestCase
     /** @test */
     public function should_have_a_valid_dni_format(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(DniInvalidFormatException::class);
 
         new Dni('123456789');
     }

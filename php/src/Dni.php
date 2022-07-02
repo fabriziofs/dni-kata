@@ -2,19 +2,17 @@
 
 namespace Kata;
 
-use RuntimeException;
-
 class Dni
 {
     public function __construct(string $dni)
     {
         if (mb_strlen($dni) !== 9) {
-            throw new RuntimeException();
+            throw new DniInvalidLengthException();
         }
 
         if (!preg_match('/\d{8}[A-Z]/', $dni))
         {
-            throw new RuntimeException();
+            throw new DniInvalidFormatException();
         }
 
         if (in_array(mb_substr($dni, -1), ['I', 'Ñ', 'O', 'U'])) {
