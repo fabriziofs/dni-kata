@@ -4,6 +4,8 @@ namespace Kata;
 
 class Dni
 {
+    private const VALID_LENGTH = 9;
+
     public function __construct(string $dni)
     {
         $this->ensureValidLength($dni);
@@ -13,7 +15,7 @@ class Dni
 
     private function ensureValidLength(string $dni): void
     {
-        if (mb_strlen($dni) !== 9) {
+        if (mb_strlen($dni) !== self::VALID_LENGTH) {
             throw new DniInvalidLengthException();
         }
     }
