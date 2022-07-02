@@ -11,5 +11,10 @@ class Dni
         if (mb_strlen($dni) !== 9) {
             throw new RuntimeException();
         }
+
+        if (!preg_match('/\d{8}[A-Z]/', $dni))
+        {
+            throw new RuntimeException();
+        }
     }
 }
