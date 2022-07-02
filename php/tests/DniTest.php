@@ -2,6 +2,7 @@
 
 namespace KataTests;
 
+use Generator;
 use Kata\Dni;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
@@ -30,5 +31,23 @@ class DniTest extends TestCase
         $this->expectException(RuntimeException::class);
 
         new Dni('123456789');
+    }
+
+    /** @test
+     * @dataProvider invalidLetterDniProvider
+     */
+    public function should_have_a_valid_letter($dni): void
+    {
+        $this->expectException(RuntimeException::class);
+
+        new Dni($dni);
+    }
+
+    public function invalidLetterDniProvider(): Generator
+    {
+        yield ['I' => '12345678I'];
+        yield ['Ñ' => '12345678Ñ'];
+        yield ['O' => '12345678O'];
+        yield ['U' => '12345678U'];
     }
 }
