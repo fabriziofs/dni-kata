@@ -4,6 +4,7 @@ namespace KataTests;
 
 use Kata\Dni;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 class DniTest extends TestCase
 {
@@ -13,5 +14,13 @@ class DniTest extends TestCase
         $dni = new Dni('31970165G');
 
         self::assertInstanceOf(Dni::class, $dni);
+    }
+
+    /** @test */
+    public function should_have_nine_characters(): void
+    {
+        $this->expectException(RuntimeException::class);
+
+        new Dni('1234567N');
     }
 }
