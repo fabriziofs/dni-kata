@@ -58,22 +58,32 @@ class Dni
 
     private function ensureValidLetter(string $dni): void
     {
-        if (in_array(mb_substr($dni, -1), self::INVALID_LETTERS)) {
+        if (in_array($this->getLetter($dni), self::INVALID_LETTERS)) {
             throw new DniInvalidLetterException();
         }
     }
 
     private function ensureValidLetterForThatNumbers(string $dni): void
     {
-        $number = (int)substr($dni, 0, 8);
+        $number = (int)$this->getNumbers($dni);
 
         $result = $number % 23;
 
         $correctLetter = self::LETTER_MAPPER[$result];
-        $actualLetter = mb_substr($dni, -1);
+        $actualLetter  = $this->getLetter($dni);
 
         if ($correctLetter !== $actualLetter) {
             throw new DniInvalidLetterException();
         }
+    }
+
+    private function getLetter(string $dni): string
+    {
+        return mb_substr($dni, -1);
+    }
+
+    private function getNumbers(string $dni)
+    {
+        return substr($dni, 0, 8);
     }
 }
