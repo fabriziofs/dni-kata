@@ -23,4 +23,12 @@ class DniTest extends TestCase
 
         new Dni('1234567N');
     }
+
+    /** @test */
+    public function should_have_a_valid_dni_format(): void
+    {
+        $this->expectException(RuntimeException::class);
+
+        new Dni('123456789');
+    }
 }
