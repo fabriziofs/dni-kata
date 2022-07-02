@@ -6,9 +6,9 @@ namespace Kata;
 
 class Dni
 {
-    private const VALID_LENGTH = 9;
-
-    private const LETTER_MAPPER = [
+    private const VALID_LENGTH    = 9;
+    private const INVALID_LETTERS = ['I', 'Ñ', 'O', 'U'];
+    private const LETTER_MAPPER   = [
         0  => 'T',
         1  => 'R',
         2  => 'W',
@@ -58,7 +58,7 @@ class Dni
 
     private function ensureValidLetter(string $dni): void
     {
-        if (in_array(mb_substr($dni, -1), ['I', 'Ñ', 'O', 'U'])) {
+        if (in_array(mb_substr($dni, -1), self::INVALID_LETTERS)) {
             throw new DniInvalidLetterException();
         }
     }
