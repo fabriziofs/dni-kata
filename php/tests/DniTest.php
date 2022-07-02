@@ -45,9 +45,9 @@ class DniTest extends TestCase
 
     public function invalidLetterDniProvider(): Generator
     {
-        yield ['I' => '12345678I'];
-        yield ['Ñ' => '12345678Ñ'];
-        yield ['O' => '12345678O'];
-        yield ['U' => '12345678U'];
+        yield 'I' => ['12345678I'];
+        yield 'Ñ' => ['12345678Ñ'];
+        yield 'O' => ['12345678O'];
+        yield 'U' => ['12345678U'];
     }
 }
