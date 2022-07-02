@@ -16,7 +16,7 @@ class Dni
         }
 
         if (in_array(mb_substr($dni, -1), ['I', 'Ñ', 'O', 'U'])) {
-            throw new RuntimeException();
+            throw new DniInvalidLetterException();
         }
     }
 }

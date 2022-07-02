@@ -6,8 +6,8 @@ use Generator;
 use Kata\Dni;
 use Kata\DniInvalidFormatException;
 use Kata\DniInvalidLengthException;
+use Kata\DniInvalidLetterException;
 use PHPUnit\Framework\TestCase;
-use RuntimeException;
 
 class DniTest extends TestCase
 {
@@ -40,7 +40,7 @@ class DniTest extends TestCase
      */
     public function should_have_a_valid_letter($dni): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(DniInvalidLetterException::class);
 
         new Dni($dni);
     }
