@@ -7,9 +7,9 @@ namespace Kata;
 class Dni
 {
     private const VALID_LENGTH        = 9;
-    private const INVALID_LETTERS     = ['I', 'Ñ', 'O', 'U'];
-    private const INVALID_NIE_LETTERS = ['X', 'Y', 'Z'];
-    private const LETTER_MAPPER       = [
+    private const INVALID_LETTERS   = ['I', 'Ñ', 'O', 'U'];
+    private const VALID_NIE_LETTERS = ['X', 'Y', 'Z'];
+    private const LETTER_MAPPER     = [
         0  => 'T',
         1  => 'R',
         2  => 'W',
@@ -59,7 +59,7 @@ class Dni
 
     private function ensureValidLetter(string $dni): void
     {
-        if (in_array($this->getNieLetter($dni), self::INVALID_NIE_LETTERS)) {
+        if ($this->firstCharacterIsALetter($dni) && !in_array($this->getNieLetter($dni), self::VALID_NIE_LETTERS)) {
             throw new NieInvalidFirstLetterException();
         }
 
