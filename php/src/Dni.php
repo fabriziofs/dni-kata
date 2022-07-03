@@ -6,9 +6,10 @@ namespace Kata;
 
 class Dni
 {
-    private const VALID_LENGTH    = 9;
-    private const INVALID_LETTERS = ['I', 'Ñ', 'O', 'U'];
-    private const LETTER_MAPPER   = [
+    private const VALID_LENGTH        = 9;
+    private const INVALID_LETTERS     = ['I', 'Ñ', 'O', 'U'];
+    private const INVALID_NIE_LETTERS = ['X', 'Y', 'Z'];
+    private const LETTER_MAPPER       = [
         0  => 'T',
         1  => 'R',
         2  => 'W',
@@ -51,13 +52,17 @@ class Dni
 
     private function ensureValidFormat(string $dni): void
     {
-        if (!preg_match('/\d{8}[A-ZÑ]/u', $dni)) {
+        if (!preg_match('/\d{8}[A-ZÑ]/u', $dni) && !$this->firstCharacterIsALetter($dni)) {
             throw new DniInvalidFormatException();
         }
     }
 
     private function ensureValidLetter(string $dni): void
     {
+        if (in_array($this->getNieLetter($dni), self::INVALID_NIE_LETTERS)) {
+            throw new NieInvalidFirstLetterException();
+        }
+
         if (in_array($this->getLetter($dni), self::INVALID_LETTERS)) {
             throw new DniInvalidLetterException();
         }
@@ -85,5 +90,15 @@ class Dni
     private function getNumbers(string $dni)
     {
         return substr($dni, 0, 8);
+    }
+
+    private function firstCharacterIsALetter(string $dni): bool
+    {
+        return !is_numeric($dni[0]);
+    }
+
+    private function getNieLetter($dni): string
+    {
+        return $dni[0];
     }
 }
