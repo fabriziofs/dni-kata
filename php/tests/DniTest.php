@@ -108,4 +108,39 @@ class DniTest extends TestCase
         yield ['B9661016H'];
         yield ['C1019582Y'];
     }
+
+
+    /** @test
+     * @dataProvider validNiesProvider
+     */
+    public function should_change_first_letter_with_the_correct_number($nie): void
+    {
+        $validNie = new Dni($nie);
+
+        self::assertInstanceOf(Dni::class, $validNie);
+    }
+
+    public function validNiesProvider(): Generator
+    {
+        yield ['Z5090857L'];
+        yield ['Y9661016H'];
+        yield ['Y1019582Y'];
+        yield ['Y2517413P'];
+        yield ['Z5470399S'];
+        yield ['Y0468622B'];
+        yield ['X4326926M'];
+        yield ['Z6552219F'];
+        yield ['X8327408M'];
+        yield ['X1404966B'];
+        yield ['Z4791181X'];
+        yield ['Y5545378T'];
+        yield ['X0098688H'];
+        yield ['Z1246847E'];
+        yield ['Z0178750E'];
+        yield ['Y3699208V'];
+        yield ['Y0326894D'];
+        yield ['Z3936888Y'];
+        yield ['Y0375340V'];
+        yield ['X0715825L'];
+    }
 }
