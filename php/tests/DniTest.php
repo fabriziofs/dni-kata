@@ -95,17 +95,17 @@ class DniTest extends TestCase
     /** @test
      * @dataProvider invalidNieLetterProvider
      */
-    public function should_have_a_correct_nie_letter($dni): void
+    public function should_have_a_correct_nie_letter($nie): void
     {
         $this->expectException(NieInvalidFirstLetterException::class);
 
-        new Dni($dni);
+        new Dni($nie);
     }
 
     public function invalidNieLetterProvider(): Generator
     {
-        yield 'X' => ['X2345678A'];
-        yield 'Y' => ['Y2345678A'];
-        yield 'Z' => ['Z2345678A'];
+        yield ['A5090857L'];
+        yield ['B9661016H'];
+        yield ['C1019582Y'];
     }
 }
