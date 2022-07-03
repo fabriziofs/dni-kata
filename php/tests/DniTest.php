@@ -8,6 +8,7 @@ use Kata\Dni;
 use Kata\DniInvalidFormatException;
 use Kata\DniInvalidLengthException;
 use Kata\DniInvalidLetterException;
+use Kata\NieInvalidFirstLetterException;
 use PHPUnit\Framework\TestCase;
 
 class DniTest extends TestCase
@@ -89,5 +90,22 @@ class DniTest extends TestCase
         yield ['00000020K'];
         yield ['00000021E'];
         yield ['00000022T'];
+    }
+
+    /** @test
+     * @dataProvider invalidNieLetterProvider
+     */
+    public function should_have_a_correct_nie_letter($dni): void
+    {
+        $this->expectException(NieInvalidFirstLetterException::class);
+
+        new Dni($dni);
+    }
+
+    public function invalidNieLetterProvider(): Generator
+    {
+        yield 'X' => ['X2345678A'];
+        yield 'Y' => ['Y2345678A'];
+        yield 'Z' => ['Z2345678A'];
     }
 }
