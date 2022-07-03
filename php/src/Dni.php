@@ -89,6 +89,13 @@ class Dni
 
     private function getNumbers(string $dni)
     {
+        if ($this->firstCharacterIsALetter($dni)) {
+            $nieLetter = $this->getNieLetter($dni);
+            $numericValue = array_search($nieLetter, self::VALID_NIE_LETTERS);
+
+            $dni = $numericValue . substr($dni, 1, 8);
+        }
+
         return substr($dni, 0, 8);
     }
 
